@@ -2,6 +2,7 @@ import React from "react";
 import { AppProps } from "next/app";
 import "@/styles/globals.css";
 import { Inter } from "next/font/google";
+import { AxiosProvider } from "@/components/contexts/AxiosContext";
 import Navbar from "@/components/elements/navbar";
 
 const inter = Inter({
@@ -12,10 +13,12 @@ const inter = Inter({
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div>
-      <Navbar />
-      <div className={`${inter.className}`}>
-        <Component {...pageProps} />
-      </div>
+      <AxiosProvider>
+        <Navbar />
+        <div className={`${inter.className}`}>
+          <Component {...pageProps} />
+        </div>
+      </AxiosProvider>
     </div>
   );
 }
