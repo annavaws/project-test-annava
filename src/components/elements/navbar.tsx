@@ -42,7 +42,7 @@ const Navbar: React.FC = () => {
     <nav
       className={`bg-tango text-white fixed top-0 left-0 right-0 z-50 w-full h-[10vh] flex flex-row justify-between items-center px-10 transition-transform duration-300 ${
         scrollDirection === "down" ? "-translate-y-full" : "translate-y-0"
-      } ${hasScrolled ? "bg-opacity-90 backdrop-blur-xl" : ""}`}
+      } ${hasScrolled ? "bg-opacity-70" : ""}`}
     >
       <Link href="/" passHref>
         <Image
@@ -52,7 +52,7 @@ const Navbar: React.FC = () => {
           height={100}
         />
       </Link>
-      <div className="left-0 w-full flex justify-end flex-row items-center gap-16 px-10 py-5 backdrop-blur-xl">
+      <div className="left-0 w-full flex justify-end flex-row items-center gap-16 px-10 py-5">
         {links.map(({ href, label }) => (
           <Link href={href} key={href} passHref>
             <span

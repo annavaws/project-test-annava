@@ -28,8 +28,8 @@ const IndexPage = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Ideas</h1>
+    <div className="min-h-screen bg-white flex items-center justify-center">
+      <div>Hello, why this page so weird</div>
     </div>
   );
 };
