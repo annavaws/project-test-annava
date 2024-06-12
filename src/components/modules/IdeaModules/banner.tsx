@@ -37,7 +37,7 @@ const Banner = () => {
         </div>
       </div>
 
-      <div className="w-full absolute flex top-[60vh] transform -translate-y-1/2 z-20">
+      <div className="w-full absolute flex justify-end h-full transform z-20">
         <Image
           src="/polygon.png"
           width={1400}
