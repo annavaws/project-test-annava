@@ -87,7 +87,8 @@ const IndexPage: React.FC = () => {
         pageSize={pageSize}
         sortOrder={sortOrder}
       />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-4">
+      <div className="pb-4"></div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 my-4">
         {ideas.map((idea) => (
           <ArticleCard key={idea.id} article={idea} />
         ))}

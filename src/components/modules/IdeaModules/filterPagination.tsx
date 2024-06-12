@@ -41,13 +41,13 @@ const FilterPagination: React.FC<FilterPaginationProps> = ({
         Showing {currentPage * pageSize - pageSize + 1}-
         {Math.min(currentPage * pageSize, totalItems)} of {totalItems}
       </div>
-      <div className="flex space-x-4">
+      <div className="flex space-x-12">
         <label className="flex items-center">
           Show per page:
           <select
             value={pageSize}
             onChange={handlePageSizeChange}
-            className="ml-2 border rounded px-2 py-1"
+            className="ml-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-tango focus:border-tango block px-4 py-2 pr-10"
           >
             {pageSizes.map((size) => (
               <option key={size} value={size}>
@@ -61,10 +61,11 @@ const FilterPagination: React.FC<FilterPaginationProps> = ({
           <select
             value={sortOrder}
             onChange={handleSortOrderChange}
-            className="ml-2 border rounded px-2 py-1"
+            className="ml-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-tango focus:border-tango block px-4 py-2 pr-10"
+            // className="ml-2 border rounded-full px-4 py-2 text-left pr-10"
           >
             {sortOptions.map((option) => (
-              <option key={option.value} value={option.value}>
+              <option key={option.value} value={option.value} className="">
                 {option.label}
               </option>
             ))}
