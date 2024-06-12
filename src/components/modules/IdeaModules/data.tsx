@@ -20,6 +20,7 @@ const IndexPage: React.FC = () => {
   const [pageSize, setPageSize] = useState<number>(10);
   const [sortOrder, setSortOrder] = useState<string>("-published_at");
   const [totalItems, setTotalItems] = useState<number>(0);
+  const [initialized, setInitialized] = useState<boolean>(false);
 
   useEffect(() => {
     const savedCurrentPage = parseInt(
@@ -31,9 +32,12 @@ const IndexPage: React.FC = () => {
     setCurrentPage(savedCurrentPage);
     setPageSize(savedPageSize);
     setSortOrder(savedSortOrder);
+    setInitialized(true);
   }, []);
 
   useEffect(() => {
+    if (!initialized) return;
+
     const fetchData = async () => {
       try {
         const response = await axios.get("/api/ideas", {
@@ -52,8 +56,7 @@ const IndexPage: React.FC = () => {
     };
 
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPage, pageSize, sortOrder]);
+  }, [currentPage, pageSize, sortOrder, initialized]);
 
   const handleFilterChange = ({
     pageSize,
@@ -94,20 +97,6 @@ const IndexPage: React.FC = () => {
           <ArticleCard key={idea.id} article={idea} />
         ))}
       </div>
-      {/* <div className="flex justify-center mt-4">
-        {Array.from({ length: Math.ceil(totalItems / pageSize) }, (_, i) => (
-          <button
-            key={i}
-            onClick={() => handlePageChange(i + 1)}
-            disabled={currentPage === i + 1}
-            className={`mx-1 px-3 py-1 rounded ${
-              currentPage === i + 1 ? "bg-blue-500 text-white" : "bg-gray-300"
-            }`}
-          >
-            {i + 1}
-          </button>
-        ))}
-      </div> */}
       <Pagination
         totalItems={totalItems}
         pageSize={pageSize}
