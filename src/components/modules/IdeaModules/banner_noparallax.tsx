@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-export default function Banner() {
+export default function BannerNoParallax() {
   //   const backgroundImageUrl = "/banner.png";
   const backgroundImageUrl =
     "https://suitmedia.static-assets.id/strapi/about_us_0b0537a706.png";
