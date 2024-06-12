@@ -14,12 +14,29 @@ interface Article {
 interface ArticleCardProps {
   article: Article;
 }
-
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
   const imageUrl =
     article.small_image && article.small_image.length > 0
       ? article.small_image[0].url
       : "";
+
+  const publishedDate = new Date(article.published_at);
+  const monthName = months[publishedDate.getMonth()];
+  const formattedDate = `${publishedDate.getDate()} ${monthName} ${publishedDate.getFullYear()}`;
 
   return (
     <div className="border rounded-lg shadow-lg">
@@ -36,7 +53,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
         )}
       </div>
       <div className="p-3 pt-0">
-        <div>{new Date(article.published_at).toLocaleDateString()}</div>
+        <div className="uppercase">{formattedDate}</div>
         <div className="text-lg font-semibold overflow-hidden text-ellipsis max-h-20 line-clamp-3">
           {article.title}
         </div>

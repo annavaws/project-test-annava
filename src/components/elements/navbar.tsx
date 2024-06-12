@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("up");
   const router = useRouter();
@@ -29,7 +31,6 @@ const Navbar: React.FC = () => {
 
   const links = [
     { href: "/", label: "" },
-    { href: "/home", label: "Home" },
     { href: "/work", label: "Work" },
     { href: "/services", label: "Services" },
     { href: "/about", label: "About" },
@@ -44,15 +45,31 @@ const Navbar: React.FC = () => {
         scrollDirection === "down" ? "-translate-y-full" : "translate-y-0"
       } ${hasScrolled ? "bg-opacity-70" : ""}`}
     >
-      <Link href="/" passHref>
-        <Image
-          src="/site-logo-white.webp"
-          alt="logo"
-          width={100}
-          height={100}
-        />
-      </Link>
-      <div className="left-0 w-full flex justify-end flex-row items-center gap-16 px-10 py-5">
+      <div className="pl-10">
+        <Link href="/" passHref>
+          <Image
+            src="/site-logo-white.webp"
+            alt="logo"
+            width={100}
+            height={100}
+          />
+        </Link>
+      </div>
+      <button className="lg:hidden text-xl" onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? <FaTimes /> : <FaBars />}
+      </button>
+      {/* <div
+        className={`left-0 w-full flex justify-end flex-row items-center gap-16 px-10 py-5 ${
+          isOpen ? "flex justify-end" : "hidden"
+        } `}
+      > */}
+      <div
+        className={`absolute top-full left-0 w-full bg-tango lg:p-10 lg:gap-10 lg:bg-transparent lg:static lg:flex justify-end ${
+          isOpen ? "flex justify-end" : "hidden"
+        } flex-col lg:flex-row items-center gap-4 pb-4 lg:p-0 ${
+          scrollDirection === "down" ? "-translate-y-full" : "translate-y-0"
+        }  ${hasScrolled ? "bg-opacity-70" : ""}`}
+      >
         {links.map(({ href, label }) => (
           <Link href={href} key={href} passHref>
             <span
@@ -60,6 +77,7 @@ const Navbar: React.FC = () => {
                 router.pathname === href ? "underline underline-offset-8" : ""
               }`}
               onClick={(e) => {
+                setIsOpen(false);
                 if (router.pathname === href) {
                   e.preventDefault();
                 }

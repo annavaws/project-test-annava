@@ -36,12 +36,12 @@ const FilterPagination: React.FC<FilterPaginationProps> = ({
   };
 
   return (
-    <div className="flex justify-between items-center mb-4">
-      <div>
+    <div className="flex flex-col lg:flex-row justify-between items-center mb-4">
+      <div className="mb-6 text-center lg:mb-0">
         Showing {currentPage * pageSize - pageSize + 1}-
         {Math.min(currentPage * pageSize, totalItems)} of {totalItems}
       </div>
-      <div className="flex space-x-12">
+      <div className="flex space-x-12 flex-col gap-4 md:gap-0 md:flex-row">
         <label className="flex items-center">
           Show per page:
           <select
