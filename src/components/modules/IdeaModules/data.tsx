@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import FilterPagination from "@/components/modules/IdeaModules/filterPagination";
+import FilterPagination from "@/components/modules/IdeaModules/filter";
 import ArticleCard from "@/components/modules/IdeaModules/articleCard";
+import Pagination from "@/components/modules/IdeaModules/pagination";
 
 interface Idea {
   id: number;
@@ -93,7 +94,7 @@ const IndexPage: React.FC = () => {
           <ArticleCard key={idea.id} article={idea} />
         ))}
       </div>
-      <div className="flex justify-center mt-4">
+      {/* <div className="flex justify-center mt-4">
         {Array.from({ length: Math.ceil(totalItems / pageSize) }, (_, i) => (
           <button
             key={i}
@@ -106,7 +107,13 @@ const IndexPage: React.FC = () => {
             {i + 1}
           </button>
         ))}
-      </div>
+      </div> */}
+      <Pagination
+        totalItems={totalItems}
+        pageSize={pageSize}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };
