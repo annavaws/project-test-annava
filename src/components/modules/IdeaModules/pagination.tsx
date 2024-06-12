@@ -60,14 +60,18 @@ const Pagination: React.FC<PaginationProps> = ({
       <button
         onClick={() => handleClick(1)}
         disabled={currentPage === 1}
-        className="px-3 py-1 mx-1"
+        className={`px-3 py-1 mx-1 ${
+          currentPage === 1 ? "text-gray-400 cursor-not-allowed" : ""
+        }`}
       >
         {"<<"}
       </button>
       <button
         onClick={() => handleClick(currentPage - 1)}
         disabled={currentPage === 1}
-        className="px-3 py-1 mx-1"
+        className={`px-3 py-1 mx-1 ${
+          currentPage === 1 ? "text-gray-400 cursor-not-allowed" : ""
+        }`}
       >
         {"<"}
       </button>
@@ -75,14 +79,18 @@ const Pagination: React.FC<PaginationProps> = ({
       <button
         onClick={() => handleClick(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="px-3 py-1 mx-1"
+        className={`px-3 py-1 mx-1 ${
+          currentPage === totalPages ? "text-gray-400 cursor-not-allowed" : ""
+        }`}
       >
         {">"}
       </button>
       <button
         onClick={() => handleClick(totalPages)}
         disabled={currentPage === totalPages}
-        className="px-3 py-1 mx-1"
+        className={`px-3 py-1 mx-1 ${
+          currentPage === totalPages ? "text-gray-400 cursor-not-allowed" : ""
+        }`}
       >
         {">>"}
       </button>
