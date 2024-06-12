@@ -6,7 +6,9 @@ import ArticleCard from "@/components/modules/IdeaModules/articleCard";
 interface Idea {
   id: number;
   title: string;
-  small_image: string;
+  small_image: {
+    url: string;
+  }[];
   medium_image: string;
   published_at: string;
 }
@@ -43,15 +45,13 @@ const IndexPage: React.FC = () => {
         });
         setIdeas(response.data.data);
         setTotalItems(response.data.meta.total);
-        console.log("idead", ideas);
-        console.log("total items", totalItems);
       } catch (error) {
         console.error("Error fetching ideas:", error);
       }
     };
 
     fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage, pageSize, sortOrder]);
 
   const handleFilterChange = ({
@@ -79,7 +79,7 @@ const IndexPage: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="min-h-screen mt-12 mx-auto px-28 mb-10 ">
       <FilterPagination
         onFilterChange={handleFilterChange}
         totalItems={totalItems}
@@ -87,7 +87,7 @@ const IndexPage: React.FC = () => {
         pageSize={pageSize}
         sortOrder={sortOrder}
       />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-4">
         {ideas.map((idea) => (
           <ArticleCard key={idea.id} article={idea} />
         ))}

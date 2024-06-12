@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from "react";
 import { IContextWithChildren } from "./interface";
-import axios from "axios";
+import axios, { AxiosInstance } from "axios";
 
 const AxiosContext = createContext({});
 
@@ -12,3 +12,22 @@ export const AxiosProvider: React.FC<IContextWithChildren> = ({ children }) => {
 
   return <AxiosContext.Provider value={{}}>{children}</AxiosContext.Provider>;
 };
+
+// const axiosInstance: AxiosInstance = axios.create({
+//   baseURL: "https://suitmedia-backend.suitdev.com",
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+// });
+
+// const AxiosContext = createContext<AxiosInstance>(axiosInstance);
+
+// export const useAxiosContext = () => useContext(AxiosContext);
+
+// export const AxiosProvider: React.FC<IContextWithChildren> = ({ children }) => {
+//   return (
+//     <AxiosContext.Provider value={axiosInstance}>
+//       {children}
+//     </AxiosContext.Provider>
+//   );
+// };
