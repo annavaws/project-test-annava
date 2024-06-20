@@ -83,7 +83,7 @@ const IndexPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen mt-12 mx-auto px-12 lg:px-28 pb-10 text-black">
+    <div className="min-h-screen mt-12 mx-auto px-12 lg:px-28 pb-0 text-black">
       <FilterPagination
         onFilterChange={handleFilterChange}
         totalItems={totalItems}
